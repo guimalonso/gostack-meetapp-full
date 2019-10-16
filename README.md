@@ -32,19 +32,16 @@ IMPORTANTE: Caso a aplicação já tenha sido instalada e executada previamente,
 
 6. Renomeie o arquivo ".env.example" para ".env" e altere-o inserindo as seguntes informações:
 
-# Database
-
+Database
 DB_HOST=localhost
 DB_USER=postgres
 DB_PASS=[senha_acesso] definida no passo 2
 DB_NAME=meetapp
 
-# Mongo
-
+Mongo
 MONGO_URL=mongodb://localhost:27017/meetapp
 
-# Redis
-
+Redis
 REDIS_HOST=127.0.0.1
 REDIS_PORT=6379
 
