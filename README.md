@@ -62,6 +62,10 @@ IMPORTANTE: O aplicativo e os passos abaixo foram elaborados tendo como base a p
 1. Certifique-se de que sua máquina tenha o Yarn e o react-native-cli instalados, o Back-end da aplicação em execução, e um celular ou emulador
    configurados para emular a aplicação.
 2. Antes da primeira execução, acesse a pasta "mobile" e utilize o comando "yarn" no terminal para instalação das dependências.
-3. Em um terminal, execute o comando "react-native start" na pasta do projeto para iniciar o Metro Bundler.
-4. Abra outra instância do terminal e execute o comando "react-native run-android" (Android) ou "react-native run-ios" (iOS) na pasta do projeto para iniciar a aplicação.
+3. Execute os seguintes comandos para fazer o link das dependências "react-native-gesture-handler" e "react-native-vector-icons":
+   react-native link react-native-gesture-handler
+   react-native link react-native-vector-icons
+
+4. Em um terminal, execute o comando "react-native start" na pasta do projeto para iniciar o Metro Bundler.
+5. Abra outra instância do terminal e execute o comando "react-native run-android" (Android) ou "react-native run-ios" (iOS) na pasta do projeto para iniciar a aplicação.
    Obs.: Caso esteja utilizando um celular ou emulador Android pra executar a aplicação, será necessário abrir o arquivo "services/api.js" e substituir o termo "localhost" pelo IP atual da máquina que estará rodando o back-end.
