@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { format, parseISO } from 'date-fns';
+import { format, parseISO, isBefore } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import { MdEdit, MdDelete, MdToday, MdRoom } from 'react-icons/md';
 import api from '~/services/api';
@@ -23,6 +23,7 @@ const Details = ({ match }) => {
         time: format(parsedDate, "d 'de' MMMM', às' HH'h'", {
           locale: pt,
         }),
+        past: isBefore(parsedDate, new Date()),
       };
 
       setMeetup(data);
@@ -41,18 +42,21 @@ const Details = ({ match }) => {
     <Container>
       <header>
         <h4>{meetup.name}</h4>
-        <div>
-          <Link to={`/form/${meetup.id}`}>
-            <EditButton>
-              <MdEdit size={20} color="#fff" />
-              <span>Editar</span>
-            </EditButton>
-          </Link>
-          <CancelButton onClick={handleDelete}>
-            <MdDelete size={20} color="#fff" />
-            <span>Cancelar</span>
-          </CancelButton>
-        </div>
+
+        {!meetup.past &&
+          <div>
+            <Link to={`/form/${meetup.id}`}>
+              <EditButton>
+                <MdEdit size={20} color="#fff" />
+                <span>Editar</span>
+              </EditButton>
+            </Link>
+            <CancelButton onClick={handleDelete}>
+              <MdDelete size={20} color="#fff" />
+              <span>Cancelar</span>
+            </CancelButton>
+          </div>
+        }
       </header>
 
       <Image

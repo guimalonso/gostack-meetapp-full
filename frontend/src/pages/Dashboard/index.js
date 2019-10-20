@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { format, parseISO } from 'date-fns';
+import { format, parseISO, isBefore } from 'date-fns';
 import { MdAddCircleOutline, MdChevronRight } from 'react-icons/md';
 import pt from 'date-fns/locale/pt';
 import api from '~/services/api';
@@ -21,6 +21,7 @@ export default function Dashboard() {
           time: format(parsedDate, "d 'de' MMMM', às' HH'h'", {
             locale: pt,
           }),
+          past: isBefore(parsedDate, new Date()),
           ...meetup,
         };
       });
@@ -45,7 +46,7 @@ export default function Dashboard() {
 
       <ul>
         {meetups.map(meetup => (
-          <Meetup key={meetup.id}>
+          <Meetup key={meetup.id} past={meetup.past}>
             <strong>{meetup.name}</strong>
             <span>
               {meetup.time}

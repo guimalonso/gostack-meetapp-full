@@ -44,6 +44,8 @@ export const Meetup = styled.li`
   margin-bottom: 20px;
   border-radius: 4px;
 
+  opacity: ${props => (props.past ? 0.6 : 1)};
+
   strong {
     font-size: 18px;
     color: #fff;
